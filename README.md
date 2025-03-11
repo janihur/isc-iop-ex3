@@ -6,17 +6,16 @@ Requires WireMock standalone. Load it from: https://repo1.maven.org/maven2/org/w
 Steps:
 
 1. Create Interoperability enabled namespace in Management Portal
-2. Import code (in ObjectScript shell):
+2. Import code and start IOP production (in ObjectScript shell):
 ```
 do $system.OBJ.ImportDir("<DIR>/src",,"/compile=1",,1)
 do ##class(Ens.Director).StartProduction("janihur.isciopex3.Production")
 ```
-3. Enable Interoperability production.
-4. Start WireMock:
+3. Start WireMock:
 ```
 java -jar wiremock-standalone.jar --disable-gzip --print-all-network-traffic --port 8080 --root-dir mock/
 ```
-5. Run request:
+4. Run request:
 ```
 #; In Management Portal:
 Go to Namespace and Production
