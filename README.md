@@ -15,8 +15,15 @@ do ##class(Ens.Director).StartProduction("janihur.isciopex3.Production")
 ```
 java -jar wiremock-standalone.jar --disable-gzip --print-all-network-traffic --port 8080 --root-dir mock/
 ```
-4. Run request:
+4. Several ways to run the request:
 ```
+#; easiest
+#; Runner class in ObjectScript shell:
+set status = ##class(janihur.isciopex3.Runner).Run()
+zw status
+```
+```
+#; for gui maniacs
 #; In Management Portal:
 Go to Namespace and Production
  > Select: Operations.CustomHttpRequest
@@ -26,6 +33,7 @@ Go to Namespace and Production
      > Press button: Invoke Testing Service
 ```
 ```
+#; step by step
 #; in ObjectScript shell:
 zw ##class(Ens.Director).CreateBusinessService("Services.Main",.service)
 set request = ##class(Ens.Request).%New()
